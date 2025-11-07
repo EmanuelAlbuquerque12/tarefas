@@ -37,6 +37,11 @@ COMO INICIAR (SUPER SIMPLES):
 OUTROS ARQUIVOS UTEIS:
 -------------------------------------------------------------
 
+testar-api.bat
+  -> TESTE A CONEXAO COM API PROJURIS
+  -> Execute ANTES de iniciar o dashboard
+  -> Mostra se as credenciais estao corretas
+
 parar-servidor.bat
   -> Encerra o servidor se estiver rodando
 
@@ -47,17 +52,46 @@ abrir-dashboard.bat
   -> Abre o dashboard no navegador (servidor deve estar rodando)
 
 
+TESTAR CONEXAO COM API (RECOMENDADO):
+-------------------------------------------------------------
+
+ANTES de iniciar o dashboard, teste a conexao:
+
+>>> Duplo clique em: testar-api.bat <<<
+
+Este script vai:
+- Verificar se as credenciais estao corretas
+- Testar a autenticacao com API Projuris
+- Mostrar mensagens de erro detalhadas
+- Confirmar se tudo esta funcionando
+
+Se o teste passar, o dashboard vai funcionar!
+Se der erro, voce vera exatamente qual e o problema.
+
+
 PRIMEIRA VEZ / PROBLEMAS:
 -------------------------------------------------------------
 
 Se der erro na primeira vez:
 
-1. Abra o prompt de comando (cmd) como ADMINISTRADOR
-2. Va ate a pasta do projeto:
-   cd C:\caminho\para\tarefas
-3. Execute:
-   npm install
-4. Depois tente novamente os arquivos .bat
+1. Execute PRIMEIRO: testar-api.bat
+   (Para ver qual e o problema exato)
+
+2. Se der "node nao reconhecido":
+   - Instale Node.js de https://nodejs.org/
+   - Reinicie o computador
+
+3. Se der erro de autenticacao:
+   - Verifique o arquivo .env
+   - Confirme as credenciais com o administrador
+
+4. Se precisar reinstalar dependencias:
+   - Abra o prompt de comando (cmd) como ADMINISTRADOR
+   - Va ate a pasta do projeto:
+     cd C:\caminho\para\tarefas
+   - Execute:
+     npm install
+   - Depois tente novamente os arquivos .bat
 
 
 SE AINDA ASSIM NAO FUNCIONAR:
