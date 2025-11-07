@@ -1,0 +1,110 @@
+╔═══════════════════════════════════════════════════════════════════════╗
+║                                                                       ║
+║        DASHBOARD DE TAREFAS - CASSEL RUZZARIN                        ║
+║        Integrado com API Projuris                                    ║
+║                                                                       ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+
+🚀 INÍCIO RÁPIDO
+═══════════════════════════════════════════════════════════════════════
+
+Para iniciar o Dashboard, você tem duas opções:
+
+┌───────────────────────────────────────────────────────────────────┐
+│  1. RECOMENDADO (Primeira vez ou após atualizações)                │
+│                                                                     │
+│     📁 Duplo clique em: iniciar-dashboard.bat                      │
+│                                                                     │
+│     ✓ Verifica Node.js instalado                                   │
+│     ✓ Instala dependências se necessário                           │
+│     ✓ Verifica configurações                                       │
+│     ✓ Inicia servidor                                              │
+│     ✓ Abre navegador automaticamente                               │
+│                                                                     │
+└───────────────────────────────────────────────────────────────────┘
+
+┌───────────────────────────────────────────────────────────────────┐
+│  2. INICIALIZAÇÃO RÁPIDA (Uso diário)                              │
+│                                                                     │
+│     📁 Duplo clique em: iniciar-rapido.bat                         │
+│                                                                     │
+│     ✓ Inicia o servidor direto (sem verificações)                  │
+│     ✓ Abre o navegador automaticamente                             │
+│     ✓ Mais rápido para uso rotineiro                               │
+│                                                                     │
+└───────────────────────────────────────────────────────────────────┘
+
+
+📌 OUTROS ARQUIVOS ÚTEIS
+═══════════════════════════════════════════════════════════════════════
+
+📁 parar-servidor.bat
+   └─ Encerra o servidor se estiver rodando em background
+
+📁 instalar-dependencias.bat
+   └─ Instala ou atualiza as dependências do projeto
+
+📁 abrir-dashboard.bat
+   └─ Abre o dashboard no navegador (servidor já deve estar rodando)
+
+
+🔧 REQUISITOS
+═══════════════════════════════════════════════════════════════════════
+
+✓ Node.js 14 ou superior instalado
+  └─ Download: https://nodejs.org/ (versão LTS recomendada)
+
+✓ Conexão com internet (para acessar API Projuris)
+
+✓ Credenciais válidas da API Projuris (já configuradas no .env)
+
+
+💡 DICAS DE USO
+═══════════════════════════════════════════════════════════════════════
+
+• Mantenha a janela do prompt de comando aberta enquanto usa o dashboard
+• Para parar o servidor: Pressione Ctrl+C na janela do prompt
+• Se a porta 3000 estiver em uso, edite o arquivo .env e mude PORT=3000
+• Os dados são carregados automaticamente ao abrir o dashboard
+• Use o botão "Carregar/Atualizar Dados" para buscar dados atualizados
+
+
+🌐 ACESSO AO DASHBOARD
+═══════════════════════════════════════════════════════════════════════
+
+Depois de iniciar o servidor, acesse no navegador:
+
+   👉 http://localhost:3000
+
+
+🆘 PROBLEMAS COMUNS
+═══════════════════════════════════════════════════════════════════════
+
+❌ "Node.js não está instalado"
+   └─ Solução: Instale o Node.js de https://nodejs.org/
+
+❌ "Port 3000 is already in use"
+   └─ Solução: Execute parar-servidor.bat ou mude a porta no .env
+
+❌ "Erro de autenticação na API"
+   └─ Solução: Verifique as credenciais no arquivo .env
+
+❌ "Nenhuma tarefa encontrada"
+   └─ Solução: Verifique sua permissão de acesso no Projuris
+
+❌ Dashboard não abre automaticamente
+   └─ Solução: Abra manualmente http://localhost:3000
+
+
+📞 SUPORTE
+═══════════════════════════════════════════════════════════════════════
+
+Para mais detalhes técnicos, consulte:
+• README.md - Documentação completa
+• START.md - Guia de inicialização rápida
+
+
+═══════════════════════════════════════════════════════════════════════
+         Desenvolvido para Cassel Ruzzarin Advogados
+═══════════════════════════════════════════════════════════════════════
