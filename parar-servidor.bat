@@ -1,31 +1,25 @@
 @echo off
-chcp 65001 >nul
 cls
-
 color 0C
 echo.
-echo ╔═══════════════════════════════════════════════════════════════╗
-echo ║                                                               ║
-echo ║     Parando Servidor do Dashboard                            ║
-echo ║                                                               ║
-echo ╚═══════════════════════════════════════════════════════════════╝
+echo ============================================================
+echo.
+echo     Encerrando Servidor do Dashboard
+echo.
+echo ============================================================
+echo.
+echo Procurando processos Node.js...
 echo.
 
-echo Procurando processos Node.js na porta 3000...
-echo.
+taskkill /F /IM node.exe 2>nul
 
-:: Mata todos os processos node.js (cuidado se tiver outros apps Node rodando)
-taskkill /F /IM node.exe >nul 2>&1
-
-if %errorlevel% equ 0 (
-    color 0A
-    echo ✓ Servidor encerrado com sucesso!
-) else (
+if errorlevel 1 (
     color 0E
-    echo ⚠ Nenhum servidor Node.js em execução foi encontrado.
+    echo Nenhum servidor Node.js em execucao foi encontrado.
+) else (
+    color 0A
+    echo Servidor encerrado com sucesso!
 )
 
-echo.
-echo Você pode fechar esta janela.
 echo.
 timeout /t 3 /nobreak >nul

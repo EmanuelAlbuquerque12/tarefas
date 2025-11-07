@@ -1,0 +1,102 @@
+============================================================
+  DASHBOARD DE TAREFAS - CASSEL RUZZARIN
+  Integrado com API Projuris
+============================================================
+
+COMO INICIAR (SUPER SIMPLES):
+-------------------------------------------------------------
+
+1. Certifique-se de ter o Node.js instalado:
+   Download: https://nodejs.org/
+   (Baixe a versao LTS - recomendada)
+
+2. Duplo clique em um destes arquivos:
+
+   >>> INICIAR.bat <<<
+   (Este e o mais simples e recomendado!)
+
+   OU
+
+   >>> iniciar-dashboard.bat <<<
+   (Versao com mais verificacoes)
+
+   OU
+
+   >>> iniciar-rapido.bat <<<
+   (Para uso diario, mais rapido)
+
+3. Aguarde o navegador abrir automaticamente!
+   URL: http://localhost:3000
+
+4. MANTENHA a janela do prompt ABERTA enquanto usar!
+
+5. Para parar: Pressione Ctrl+C na janela do prompt
+   (Ou execute parar-servidor.bat)
+
+
+OUTROS ARQUIVOS UTEIS:
+-------------------------------------------------------------
+
+parar-servidor.bat
+  -> Encerra o servidor se estiver rodando
+
+instalar-dependencias.bat
+  -> Instala/atualiza as dependencias do projeto
+
+abrir-dashboard.bat
+  -> Abre o dashboard no navegador (servidor deve estar rodando)
+
+
+PRIMEIRA VEZ / PROBLEMAS:
+-------------------------------------------------------------
+
+Se der erro na primeira vez:
+
+1. Abra o prompt de comando (cmd) como ADMINISTRADOR
+2. Va ate a pasta do projeto:
+   cd C:\caminho\para\tarefas
+3. Execute:
+   npm install
+4. Depois tente novamente os arquivos .bat
+
+
+SE AINDA ASSIM NAO FUNCIONAR:
+-------------------------------------------------------------
+
+Execute manualmente no prompt de comando:
+
+1. Abra o prompt (cmd)
+2. Va ate a pasta do projeto
+3. Execute:
+   npm install
+   npm start
+4. Abra o navegador em: http://localhost:3000
+
+
+PROBLEMAS COMUNS:
+-------------------------------------------------------------
+
+"node nao e reconhecido como comando"
+  -> Instale o Node.js de https://nodejs.org/
+  -> Reinicie o computador apos instalar
+
+"Port 3000 is already in use"
+  -> Execute parar-servidor.bat
+  -> Ou reinicie o computador
+
+"Erro de autenticacao"
+  -> Verifique sua conexao com internet
+  -> Verifique as credenciais no arquivo .env
+
+
+SUPORTE:
+-------------------------------------------------------------
+
+Para mais detalhes, consulte:
+- README.md (documentacao completa)
+- START.md (guia de inicializacao)
+
+
+============================================================
+Desenvolvido para Cassel Ruzzarin Advogados
+============================================================

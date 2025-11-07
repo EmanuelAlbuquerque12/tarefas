@@ -1,72 +1,57 @@
 @echo off
-chcp 65001 >nul
+chcp 65001 >nul 2>&1
 cls
-
-:: ==================================================================
-:: Dashboard de Tarefas - Cassel Ruzzarin
-:: Integração com API Projuris
-:: ==================================================================
-
 color 0A
 echo.
-echo ╔═══════════════════════════════════════════════════════════════╗
-echo ║                                                               ║
-echo ║     Dashboard de Tarefas - Cassel Ruzzarin                   ║
-echo ║     Integrado com API Projuris                               ║
-echo ║                                                               ║
-echo ╚═══════════════════════════════════════════════════════════════╝
+echo ============================================================
 echo.
-
-:: Verifica se o Node.js está instalado
+echo     Dashboard de Tarefas - Cassel Ruzzarin
+echo     Integrado com API Projuris
+echo.
+echo ============================================================
+echo.
 echo [1/4] Verificando Node.js...
+
 node --version >nul 2>&1
-if %errorlevel% neq 0 (
+if errorlevel 1 (
     color 0C
     echo.
-    echo ❌ ERRO: Node.js não está instalado!
+    echo ERRO: Node.js nao esta instalado!
     echo.
     echo Por favor, instale o Node.js em: https://nodejs.org/
-    echo Baixe a versão LTS (recomendada) e instale.
+    echo Baixe a versao LTS e instale.
     echo.
     pause
     exit /b 1
 )
 
-for /f "tokens=*" %%i in ('node --version') do set NODE_VERSION=%%i
-echo ✓ Node.js %NODE_VERSION% encontrado
+echo OK - Node.js encontrado
 echo.
 
-:: Verifica se as dependências estão instaladas
-echo [2/4] Verificando dependências...
-if not exist "node_modules\" (
-    echo ⚠ Dependências não encontradas. Instalando...
+echo [2/4] Verificando dependencias...
+if not exist "node_modules" (
+    echo Instalando dependencias...
     echo.
     call npm install
-    if %errorlevel% neq 0 (
+    if errorlevel 1 (
         color 0C
         echo.
-        echo ❌ ERRO ao instalar dependências!
+        echo ERRO ao instalar dependencias!
         echo.
         pause
         exit /b 1
     )
-    echo.
-    echo ✓ Dependências instaladas com sucesso
+    echo OK - Dependencias instaladas
 ) else (
-    echo ✓ Dependências já instaladas
+    echo OK - Dependencias ja instaladas
 )
 echo.
 
-:: Verifica se o arquivo .env existe
-echo [3/4] Verificando configuração...
+echo [3/4] Verificando configuracao...
 if not exist ".env" (
-    color 0E
-    echo.
-    echo ⚠ AVISO: Arquivo .env não encontrado!
-    echo.
-    echo Criando arquivo .env com configurações padrão...
+    echo Criando arquivo .env...
     (
-        echo # Configurações da API Projuris
+        echo # Configuracoes da API Projuris
         echo PROJURIS_DOMAIN=servidor
         echo PROJURIS_USER=sistemacassel@servidor.adv.br
         echo PROJURIS_PASSWORD=CRrKrw9D63TvHi
@@ -75,48 +60,38 @@ if not exist ".env" (
         echo PROJURIS_CLIENT_ID=api_cliente_codigo_12964
         echo PROJURIS_CLIENT_SECRET=@2022@8da6df1ca4914b04a5df3566278e5393
         echo.
-        echo # Configurações do servidor
+        echo # Configuracoes do servidor
         echo PORT=3000
         echo NODE_ENV=development
     ) > .env
-    echo ✓ Arquivo .env criado
-    color 0A
+    echo OK - Arquivo .env criado
 ) else (
-    echo ✓ Arquivo .env encontrado
+    echo OK - Arquivo .env encontrado
 )
 echo.
 
-:: Inicia o servidor
 echo [4/4] Iniciando servidor...
 echo.
-echo ═══════════════════════════════════════════════════════════════
+echo ============================================================
 echo.
-echo 🚀 Servidor iniciando...
-echo 📡 URL: http://localhost:3000
+echo    Servidor iniciando...
+echo    URL: http://localhost:3000
 echo.
-echo ⏳ Aguarde alguns segundos para o servidor iniciar...
-echo 🌐 O navegador abrirá automaticamente em 5 segundos
+echo    Aguarde 5 segundos, o navegador abrira automaticamente
 echo.
-echo ═══════════════════════════════════════════════════════════════
+echo    Para PARAR o servidor, pressione Ctrl+C
+echo.
+echo ============================================================
 echo.
 
-:: Aguarda 5 segundos e abre o navegador
-start /B cmd /c "timeout /t 5 /nobreak >nul && start http://localhost:3000"
-
-:: Inicia o servidor (este comando bloqueia o terminal)
-echo 📊 Dashboard rodando! Mantenha esta janela aberta.
-echo.
-echo ⚠ Para PARAR o servidor, pressione Ctrl+C
-echo.
-echo ═══════════════════════════════════════════════════════════════
-echo.
+timeout /t 5 /nobreak >nul
+start http://localhost:3000
 
 node server.js
 
-:: Se o servidor parar (Ctrl+C ou erro)
 echo.
-echo ═══════════════════════════════════════════════════════════════
+echo ============================================================
 echo Servidor encerrado.
-echo ═══════════════════════════════════════════════════════════════
+echo ============================================================
 echo.
 pause

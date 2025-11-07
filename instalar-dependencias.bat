@@ -1,23 +1,19 @@
 @echo off
-chcp 65001 >nul
 cls
-
 color 0B
 echo.
-echo ╔═══════════════════════════════════════════════════════════════╗
-echo ║                                                               ║
-echo ║     Instalar/Atualizar Dependências                          ║
-echo ║                                                               ║
-echo ╚═══════════════════════════════════════════════════════════════╝
+echo ============================================================
+echo.
+echo     Instalar/Atualizar Dependencias
+echo.
+echo ============================================================
 echo.
 
-:: Verifica se o Node.js está instalado
-echo Verificando Node.js...
 node --version >nul 2>&1
-if %errorlevel% neq 0 (
+if errorlevel 1 (
     color 0C
     echo.
-    echo ❌ ERRO: Node.js não está instalado!
+    echo ERRO: Node.js nao esta instalado!
     echo.
     echo Por favor, instale o Node.js em: https://nodejs.org/
     echo.
@@ -25,26 +21,25 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-echo ✓ Node.js encontrado
+echo Node.js encontrado!
 echo.
-
-echo Instalando/Atualizando dependências...
+echo Instalando/Atualizando dependencias...
 echo.
-echo ════════════════════════════════════════════════════════════════
+echo ============================================================
 echo.
 
 call npm install
 
 echo.
-echo ════════════════════════════════════════════════════════════════
+echo ============================================================
 echo.
 
-if %errorlevel% equ 0 (
-    color 0A
-    echo ✓ Dependências instaladas com sucesso!
-) else (
+if errorlevel 1 (
     color 0C
-    echo ❌ Erro ao instalar dependências!
+    echo ERRO ao instalar dependencias!
+) else (
+    color 0A
+    echo Dependencias instaladas com sucesso!
 )
 
 echo.
