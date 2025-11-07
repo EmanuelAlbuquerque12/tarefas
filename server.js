@@ -8,6 +8,59 @@ const projurisAuth = require('./services/projurisAuth');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Função para verificar configuração
+function verificarConfiguracao() {
+  console.log('\n🔍 Verificando configuração...\n');
+
+  const requiredVars = [
+    'PROJURIS_TOKEN_URL',
+    'PROJURIS_CLIENT_ID',
+    'PROJURIS_CLIENT_SECRET',
+    'PROJURIS_USER',
+    'PROJURIS_PASSWORD',
+    'PROJURIS_DOMAIN',
+    'PROJURIS_API_URL'
+  ];
+
+  const missing = [];
+  const configured = [];
+
+  requiredVars.forEach(varName => {
+    const value = process.env[varName];
+    if (!value || value === 'undefined') {
+      missing.push(varName);
+      console.log(`  ❌ ${varName}: NÃO CONFIGURADA`);
+    } else {
+      configured.push(varName);
+      // Mostra apenas parte do valor para segurança
+      const displayValue = varName.includes('PASSWORD') || varName.includes('SECRET')
+        ? '***'
+        : value.length > 50
+          ? value.substring(0, 47) + '...'
+          : value;
+      console.log(`  ✓ ${varName}: ${displayValue}`);
+    }
+  });
+
+  console.log('');
+
+  if (missing.length > 0) {
+    console.error('⚠️  AVISO: Variáveis de ambiente faltando!');
+    console.error('   Crie um arquivo .env na raiz do projeto com:');
+    missing.forEach(varName => {
+      console.error(`   ${varName}=seu_valor_aqui`);
+    });
+    console.error('');
+  } else {
+    console.log('✓ Todas as variáveis de ambiente estão configuradas!\n');
+  }
+
+  return missing.length === 0;
+}
+
+// Verifica configuração antes de iniciar
+verificarConfiguracao();
+
 // Middlewares
 app.use(cors());
 app.use(express.json());

@@ -28,6 +28,31 @@ class ProjurisAuth {
 
       console.log('→ Solicitando novo token de acesso...');
 
+      // Validação das variáveis de ambiente
+      const requiredVars = {
+        'PROJURIS_TOKEN_URL': this.tokenUrl,
+        'PROJURIS_CLIENT_ID': this.clientId,
+        'PROJURIS_CLIENT_SECRET': this.clientSecret,
+        'PROJURIS_USER': this.username,
+        'PROJURIS_PASSWORD': this.password,
+        'PROJURIS_DOMAIN': this.domain
+      };
+
+      const missingVars = Object.entries(requiredVars)
+        .filter(([key, value]) => !value || value === 'undefined')
+        .map(([key]) => key);
+
+      if (missingVars.length > 0) {
+        throw new Error(`Variáveis de ambiente não configuradas: ${missingVars.join(', ')}`);
+      }
+
+      // Log das configurações (sem mostrar senha)
+      console.log('Configurações de autenticação:');
+      console.log(`  Token URL: ${this.tokenUrl}`);
+      console.log(`  Client ID: ${this.clientId}`);
+      console.log(`  Username: ${this.username}`);
+      console.log(`  Domain: ${this.domain}`);
+
       // Prepara as credenciais em Base64 para autenticação básica
       const credentials = Buffer.from(`${this.clientId}:${this.clientSecret}`).toString('base64');
 
@@ -61,6 +86,18 @@ class ProjurisAuth {
       return accessToken;
     } catch (error) {
       console.error('✗ Erro ao obter token:', error.response?.data || error.message);
+
+      // Log detalhado do erro
+      if (error.response) {
+        console.error('  Status:', error.response.status);
+        console.error('  Data:', error.response.data);
+      } else if (error.request) {
+        console.error('  Nenhuma resposta recebida da API');
+        console.error('  Request:', error.request);
+      } else {
+        console.error('  Erro:', error.message);
+      }
+
       throw new Error(`Falha na autenticação: ${error.response?.data?.error_description || error.message}`);
     }
   }
